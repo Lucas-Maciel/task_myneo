@@ -4,7 +4,7 @@ library(shinythemes)
 source(file = "src/decode_functions.R")
 
 ui <- fluidPage(
-  theme = shinytheme("sandstone"),
+  theme = shinytheme("spacelab"),
   
   # Application title
   titlePanel(title=div(img(src="myneotx_logo.jpeg", height = '40', width = '40'), "myNEO Therapeutics"),windowTitle ="myNEO Therapeutics" ),

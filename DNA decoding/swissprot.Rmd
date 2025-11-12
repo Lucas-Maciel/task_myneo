@@ -1,0 +1,37 @@
+---
+title: "Programming Challenge - DNA decoding"
+author: "Lucas F Maciel"
+# date: date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warning=FALSE}
+#Load necessary packages
+library(seqinr)
+library(stringr)
+```
+
+If I'm correct in my search, the shortest human protein on Swissprot has only 2 AAs.
+
+![**Uniprot**](/Users/u0143525/Documents/myNeo/DNA%20decoding/www/uniprot.jpg){width="897"}
+
+So I just downloaded all 18459 proteins there available and uploaded in R to quickly search for matches in a 100 aa windows
+
+```{r}
+## Load swissprot database
+swissprot <- read.fasta("~/Documents/myNeo/DNA decoding/data/uniprotkb_AND_reviewed_true_AND_model_o_2025_11_12.fasta",seqtype = "AA",as.string = T,seqonly =T )
+## Use str_locate to find all matches for this specific amino acids sequence
+#This looks for patterns of EIxxxEI separated by any number of aa between 0 and 96
+matches <- str_locate_all(swissprot,pattern = "EI[:alpha:]{0,96}EI")  
+#Also count number of matches to filter significant number of porteins
+counts <- str_count(swissprot,pattern = "EI[:alpha:]{0,96}EI")
+#length(counts[counts > 0])
+
+hist(counts[counts > 0],breaks = 60,labels = TRUE,ylim=c(0, 5000),xlim=c(0, 10),main = "Histogram of number of matches found per protein")
+```
+
+In total the pattern **EI**xxx**EI** inside a 100 aa window appears in *4894* proteins, out of those,*4448* have only one match in the entire protein.

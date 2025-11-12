@@ -1,0 +1,12 @@
+name: DNA_decoding
+title: DNA_decoding
+username: lucasmaciel
+account: lucasmaciel
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16040425
+bundleId: 11166960
+url: https://lucasmaciel.shinyapps.io/DNA_decoding/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
