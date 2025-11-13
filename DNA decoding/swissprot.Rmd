@@ -1,7 +1,6 @@
 ---
 title: "Programming Challenge - DNA decoding"
 author: "Lucas F Maciel"
-# date: date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -31,7 +30,7 @@ matches <- str_locate_all(swissprot,pattern = "EI[:alpha:]{0,96}EI")
 counts <- str_count(swissprot,pattern = "EI[:alpha:]{0,96}EI")
 #length(counts[counts > 0])
 
-hist(counts[counts > 0],breaks = 60,labels = TRUE,ylim=c(0, 5000),xlim=c(0, 10),main = "Histogram of number of matches found per protein")
+hist(counts[counts > 0],breaks = 60,labels = TRUE,ylim=c(0, 5000),xlim=c(0, 10),main = "Histogram of number of EIxxxEI per protein in an 100 AAs window",xlab = "Number of matches found per protein")
 ```
 
 In total the pattern **EI**xxx**EI** inside a 100 aa window appears in *4894* proteins, out of those,*4448* have only one match in the entire protein.
